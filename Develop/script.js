@@ -32,7 +32,7 @@ function generatePassword() {
   // validate
   if (!hasSpecialCharacters && !hasNumbers && !hasUpperCase && !hasLowerCase) {
     alert("You must answer yes to atleast one character type");
-    return;
+    return "";
   }
 
   var numberOfCharacters = promptNumberOfCharacters();
@@ -70,25 +70,50 @@ function generateRandomPassword(numberOfCharacters, hasSpecialCharacters, hasNum
   const lowerCaseCharacters = "abcdefghijklmnopqrstuvwxyz";
   const upperCaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+  var password = "";
+
   // create string to generate password
   var randomString = "";
   if (hasSpecialCharacters) {
     randomString = randomString + specialCharacters;
+    password = password + specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
   }
   if (hasNumbers) {
     randomString = randomString + numberCharacters;
+    password = password + numberCharacters[Math.floor(Math.random() * numberCharacters.length)];
   }
   if (hasLowerCase) {
     randomString = randomString + lowerCaseCharacters;
+    password = password + lowerCaseCharacters[Math.floor(Math.random() * lowerCaseCharacters.length)];
   }
   if (hasUpperCase) {
     randomString = randomString + upperCaseCharacters;
+    password = password + upperCaseCharacters[Math.floor(Math.random() * upperCaseCharacters.length)];
   }
 
-  var password = "";
-
-  for(var i = 0; i < numberOfCharacters; i++){
+  for (var i = 0; password.length < numberOfCharacters; i++) {
     password = password + randomString[Math.floor(Math.random() * randomString.length)]
   }
-  return password;
+
+  var output = scramblePassword(password);
+
+  return output;
+}
+
+function scramblePassword(input) {
+  var passwordArray = [];
+  var newPassword = "";
+  for (var i = 0; i < input.length; i++) {
+    passwordArray.push({ k: Math.random(), v: input[i] });
+  }
+
+  passwordArray.sort(function (a, b) {
+    return a.k - b.k;
+  });
+
+  for (var i = 0; i < passwordArray.length; i++) {
+    newPassword = newPassword + passwordArray[i].v;
+  }
+
+  return newPassword;
 }
