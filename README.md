@@ -8,6 +8,10 @@ a length of 8 to 128 is required as well.
 
 fixed problem where selecting 'yes' to each question wouldn't gaurantee atleast one of each selected criteria
 
+link to the working generator
+
+https://brinton0739.github.io/module3challenge/
+
 
 ![password generator](2022-05-21.png?raw=true "Password Generator")
 
