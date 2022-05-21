@@ -63,6 +63,7 @@ function promptNumberOfCharacters() {
     alert("you must ender a number between 8 and 128");
   }
 }
+// possible options when yes is chosen to a specific question
 
 function generateRandomPassword(numberOfCharacters, hasSpecialCharacters, hasNumbers, hasLowerCase, hasUpperCase) {
   const specialCharacters = "!@#$%^&*";
@@ -99,6 +100,9 @@ function generateRandomPassword(numberOfCharacters, hasSpecialCharacters, hasNum
 
   return output;
 }
+
+// randomize the password order
+
 
 function scramblePassword(input) {
   var passwordArray = [];
